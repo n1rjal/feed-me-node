@@ -1,0 +1,7 @@
+{
+  "yaml.schemas": {
+    "file:///Users/nirjalpaudel/.vscode/extensions/atlassian.atlascode-3.0.3/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
+    "https://json.schemastore.org/eslintrc.json": "file:///Users/nirjalpaudel/Programming/feed-me-node/pnpm-workspace.yaml"
+  },
+  "cSpell.words": ["autoincrement"]
+}
