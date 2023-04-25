@@ -1,6 +1,6 @@
-import { IsEnumField } from '../decorators/validation/IsEnumField';
-import { IsNumberField } from '../decorators/validation/IsNumberField';
-import { IsStringField } from '../decorators/validation/IsStringField';
+import { IsEnumField } from './decorators/validation/IsEnumField';
+import { IsNumberField } from './decorators/validation/IsNumberField';
+import { IsStringField } from './decorators/validation/IsStringField';
 
 export enum SortOrder {
   ASC = 'ASC',
