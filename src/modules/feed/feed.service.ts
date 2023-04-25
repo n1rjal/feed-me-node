@@ -1,11 +1,12 @@
-import { Subject } from 'rxjs';
-import { PublishToFeedDto } from './dto/publish-to-feed.dto';
-import { FeedType, IMessageEvent } from './feed.interface';
 import { Injectable } from '@nestjs/common';
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import { PublishToFeedDto } from './dto/publish-to-feed.dto';
+import { FEED_DATA_RECEIVED } from '../../common/events.constants';
+import { FeedType, IMessageEvent } from './feed.interface';
 
 @Injectable()
 export class FeedService {
-  feedSubject = new Subject<IMessageEvent>();
+  constructor(private eventEmitter: EventEmitter2) {}
 
   /**
    * The function sends a feed with a message and title to a specified ID and type.
@@ -13,7 +14,7 @@ export class FeedService {
    * `SendFeedDataInterface` which contains the following properties:
    */
   async sendFeed(data: PublishToFeedDto): Promise<PublishToFeedDto> {
-    this.feedSubject.next({
+    this.eventEmitter.emit(FEED_DATA_RECEIVED, {
       data: {
         message: data.message,
         title: data.title,
@@ -22,7 +23,7 @@ export class FeedService {
       retry: 4,
       type: FeedType.APPLICATION,
       room: data.room,
-    });
+    } as IMessageEvent);
     return data;
   }
 }

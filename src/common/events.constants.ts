@@ -1,0 +1,1 @@
+export const FEED_DATA_RECEIVED = 'FEED_DATA_RECEIVED';
