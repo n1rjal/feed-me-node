@@ -17,13 +17,12 @@ export class FeedWsGateway implements OnGatewayConnection {
   async handleConnection(socket: Socket) {
     const room = socket.handshake.query['room'];
     if (!room) return;
+    socket.join(room);
   }
 
   sendFeedData(data: IMessageEvent) {
     this.server.to(data.room).emit('feed', {
       ...data,
-      message: data.data.message,
-      title: data.data.title,
     });
   }
 }
